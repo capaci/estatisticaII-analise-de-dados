@@ -1,0 +1,28 @@
+# Trabalho de Estatística II da UFPR
+Trabalho de CE003, semestre 2016-2, que consiste em fazer uma análise estatística de alguns dados. Os dados escolhidos para esse trabalho em questão foram os dados da tabela <em>studentdata</em>, do pacote LearnBayes do programa R. O relatório é todo escrito em LaTeX, utilizando o pacote <em>Knitr</em> para executar trechos de código R presentes no documento, o que facilita a escrita do relatório.
+
+## Getting Started
+As informações necessárias para compilar o LaTeX, estão logo abaixo:
+
+### Instalar o LaTeX
+```
+sudo apt-get install texlive texlive-latex-extra texlive-lang-portuguese
+```
+
+### Instalar o R
+```
+sudo apt-get install r-base
+```
+
+### Instalar o RStudio (opcional, mas facilita bastante)
+[Link para download](https://www.rstudio.com/products/rstudio/download3/)
+
+## Compilando
+##### Pelo terminal:
+```
+R CMD Sweave relatorio.Rnw
+pdflatex relatorio.tex
+```
+
+##### Pelo RStudio:
+É bem intuitivo, na verdade. Para facilitar o entendimento, é interessante assistir esse [vídeo](http://cdn.screenr.com/video/8352c25b-7324-4134-970b-b7c427381adb.mp4) que, apesar de ser do Knitr, software semelhante ao Sweave, mostra um pouquinho sobre algumas funcionalidades interessantes do RStudio, o suficiente para esse trabalho.  
