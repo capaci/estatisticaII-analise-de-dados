@@ -1,16 +1,23 @@
 \documentclass{article}
 
+%-----
+% PACOTES
+%-----
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-\usepackage{comment}
-
-
+%-----
+% Dados sobre título e autores
+%-----
 \title{Estatística II}
 \author{Aline Santana Cordeiro - GRR20120712 \and Rafael Capaci Pereira - GRR20120731}
 \date{\today}
 
+
+%-------------------------------------------------------------------------------------
+% Início do documento
+%-------------------------------------------------------------------------------------
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
@@ -18,98 +25,126 @@
 
 %-----
 % Carregando a tabela de dados e outras configurações iniciais do R
-% * Isso está sendo feito aqui para nós não nos perdemos ao escrever o restante do documento, por isso está marcado para não mostrar os comandos e o resultado da execução
+% Isso está sendo feito aqui para nós não nos perdemos ao escrever o restante do documento, por isso está marcado para não mostrar os comandos e o resultado da execução
+% Cada coluna está representada pelo seu nome e o formato em tabela dela está com o sufixo ".tb"
 %-----
 <<label=Rsetup,echo=F,results=hide>>=
-data <- read.table("studentdata.txt", head=T)
+tb <- read.table("studentdata.txt", head=T)
+
+height <- tb[,"Height"]
+height.tb <- table(height)
+
+gender <- tb[,"Gender"]
+gender.tb <- table(gender)
+
+shoes <- tb[,"Shoes"]
+shoes.tb <- table(shoes)
+
+number <- tb[,"Number"]
+number.tb <- table(number)
+
+toSleep <- tb[,"ToSleep"]
+toSleep.tb <- table(toSleep)
+
+wakeUp <- tb[,"WakeUp"]
+wakeUp.tb <- table(wakeUp)
+
+haircut <- tb[,"Haircut"]
+haircut.tb <- table(haircut)
+
+job <- tb[,"Job"]
+job.tb <- table(job)
+
+drink <- tb[,"Drink"]
+drink.tb <- table(drink)
 @
 
+
+%-----
+% INTRODUÇÃO
+%-----
 \section{Introdução}
 O trabalho é fazer uma análise estatística de dados utilizando o \textit{Knitr}, levando em consideração tudo o que foi trabalhado durante o semestre na disciplina de Estatística II.
 
 \subsection{Tabela de Dados}
 Escolhemos o conjunto de dados studentdata, do pacote LearnBayes do programa R. Abaixo, mostramos os dez primeiros registros da tabela\footnote{Todos os dados da tabela, que possui 657 registros, podem ser encontrados no arquivo \textit{studentdata.txt}, que foi entregue junto com este relatório}:
 <<label=studentdata,echo=F>>=
-data[1:10,]
+tb[1:10,]
 @
 
 As colunas da tabela se referem às seguintes questões:
 \begin{itemize}
-\item Student: número do estudante
-\item Height: altura em polegadas
-\item Gender: gênero (Masculino/Feminino)
-\item Shoes: número de pares de sapato que possui
-\item Number: um número escolhido entre 0 e 10
-\item Dvds: número de DVD’s de filmes que possui
-\item ToSleep: hora que foi dormir na noite anterior (em relaçãao à meia noite)
-\item WakeUp: hora que acordou na manhã seguinte
-\item Haircut: custo do último corte de cabelo
-\item Job: número de horas (semanais) de trabalho
-\item Drink: bebida usual na janta (áagua, leite, suco/refrigerante)
+  \item Student: número do estudante
+  \item Height: altura em polegadas
+  \item Gender: gênero (male/female)
+  \item Shoes: número de pares de sapato que possui
+  \item Number: um número escolhido entre 0 e 10
+  \item Dvds: número de DVD’s de filmes que possui
+  \item ToSleep: hora que foi dormir na noite anterior (em relaçãao à meia noite)
+  \item WakeUp: hora que acordou na manhã seguinte
+  \item Haircut: custo do último corte de cabelo
+  \item Job: número de horas semanais de trabalho
+  \item Drink: bebida usual na janta (water, milk, pop)
 \end{itemize}
 
+%-----
+% CLASSIFICAÇÃO DOS DADOS
+%-----
 \section{Classificação dos dados}
 \begin{itemize}
-\item Student: Qualitativa nominal (??? Qualitativa pq não se refere a uma quantia e nominal pq a ordem não interessa?)
-\item Height: Quantitativa discreta (??? discreta pq, como é em polegadas, o intervalo é só dos números inteiros e tem uma certa faixa de valores)
-\item Gender: Qualitativa nominal
-\item Shoes: Quantitativa discreta
-\item Number: Qualitativa nominal (??? seria pq não está medindo nada?)
-\item Dvds: Quantitativa discreta
-\item ToSleep: Quantitativa contínua
-\item WakeUp: Quantitativa contínua
-\item Haircut: Quantitativa discreta (???)
-\item Job: Quantitativa contínua
-\item Drink: Qualitativa nominal
+  \item Student: Qualitativa nominal (??? Qualitativa pq não se refere a uma quantia e nominal pq a ordem não interessa?)
+  \item Height: Quantitativa discreta (??? discreta pq, como é em polegadas, o intervalo é só dos números inteiros e tem uma certa faixa de valores)
+  \item Gender: Qualitativa nominal
+  \item Shoes: Quantitativa discreta
+  \item Number: Qualitativa nominal (??? seria pq não está medindo nada?)
+  \item Dvds: Quantitativa discreta
+  \item ToSleep: Quantitativa contínua
+  \item WakeUp: Quantitativa contínua
+  \item Haircut: Quantitativa discreta (???)
+  \item Job: Quantitativa contínua
+  \item Drink: Qualitativa nominal
 \end{itemize}
 
+%-----
+% FREQUÊNCIAS
+%-----
 \section{Frequências}
 height
 <<label=heightFreq,echo=F>>=
-height <- table(data[,"Height"])
-height
+height.tb
 @
 gender
 <<label=genderFreq,echo=F>>=
-gender <- table(data[,"Gender"])
-gender
+gender.tb
 @
 shoes
-<<label=shoesFreq,echo=F>>=
-shoes <- table(data[,"Shoes"])
-shoes
+shoes.tb
 @
 number
 <<label=numberFreq,echo=F>>=
-number <- table(data[,"Number"])
-number
+number.tb
 @
 toSleep
 <<label=toSleepFreq,echo=F>>=
-toSleep <- table(data[,"ToSleep"])
-toSleep
+toSleep.tb
 @
 wakeUp
 <<label=wakeUpFreq,echo=F>>=
-wakeUp <- table(data[,"WakeUp"])
-wakeUp
+wakeUp.tb
 @
 haircut
 <<label=haircutFreq,echo=F>>=
-haircut <- table(data[,"Haircut"])
-haircut
+haircut.tb
 @
 job
 <<label=jobFreq,echo=F>>=
-job <- table(data[,"Job"])
-job
+job.tb
 @
 drink
 <<label=drinkFreq,echo=F>>=
-drink <- table(data[,"Drink"])
-drink
+drink.tb
 @
-@
+
 
 
 
