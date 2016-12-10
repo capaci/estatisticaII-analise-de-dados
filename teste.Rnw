@@ -14,10 +14,27 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
-%-----
-% uns testes bem loko
-%-----
 \maketitle
+
+%-----
+% Carregando a tabela de dados e outras configurações iniciais do R
+% * Isso está sendo feito aqui para nós não nos perdemos ao escrever o restante do documento
+%-----
+<<label=Rsetup,echo=F,results=hide>>=
+table <- read.table("studentdata.txt", head=T)
+@
+
+\section{Introdução}
+O trabalho é fazer uma análise estatística de dados utilizando o \textit{Knitr}, levando em consideração tudo o que foi trabalhado durante o semestre na disciplina de Estatística II.
+
+\subsection{Tabela de Dados}
+Escolhemos o conjunto de dados studentdata, do pacote LearnBayes do programa R. Abaixo, uma pequena amostra dos dados da tabela\footnote{Todos os dados da tabela, que possui 657 registros, podem ser encontrados no arquivo \textit{studentdata.txt}, que foi entregue junto com este relatório}:
+<<label=studentdata,echo=F>>=
+head(table)
+@
+
+
+
 \section{Introdu\c{c}ão}
 Este documento ilustra o uso do \textit{Sweave}, um mecanismo criado por
 Frederich Leisch (Universidade Técnica de Viena - Áustria)
