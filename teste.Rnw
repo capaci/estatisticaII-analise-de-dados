@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{comment}
+
+
+\title{Estatística II}
+\author{Aline Santana Cordeiro - GRR20120712 \and Rafael Capaci Pereira - GRR20120731}
+\date{\today}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%-----
+% uns testes bem loko
+%-----
+\maketitle
+\section{Introdu\c{c}ão}
+Este documento ilustra o uso do \textit{Sweave}, um mecanismo criado por
+Frederich Leisch (Universidade Técnica de Viena - Áustria)
+que facilita muito a cria\c{c}ão de textos de análise estatística.
+O  \textit{Sweave} combina o \LaTeX e o \textsf{R}
+para geração de relatórios automáticos e dinâmicos.
+
+Os passos são:
+\begin{enumerate}
+\item Editar arquivo do tipo \texttt{arquivo.Rnw} que consiste de texto \LaTeX + "chunks" de código R.
+\item Abrir o R e carregar pacote \texttt{tools} com o comando
+\textsl{\texttt{require(tools)}}
+\item Rodar a fun\c{c}ão Sweave no arquivo  \texttt{arquivo.Rnw}
+\textsl{\texttt{Sweave(arquivo.Rnw)}}.
+Isto vai gerar um arquivo \texttt{arquivo.tex} onde o conteúdo dos "chunks"
+estará processado e incluído no texto com sintaxe do \LaTeX
+\item Compilar o \texttt{arquivo.tex} normalmente
+\end{enumerate}
+
+O funcionamento é simples: basicamente o \textit{Sweave}
+faz com que o \textsf{R}
+interprete tudo encontrado dentro de "chunks"
+ou dentro de expressões
+\verb|Sexpr{}|.
+
+
+Vejamos um primeiro exemplo:
+<<label=amostra-normal>>=
+x <- rnorm(10)
+round(x, dig=2)
+mean(x)
+@
+Note que o código digitado no "chunk" é substituido no arquivo \LaTeX
+por: (i) código em \textsf{R} usando a fonte
+\textsl{\texttt{slanted verbatim como esta}}
+(ii) saídas dos comandos usando a fonte \texttt{verbatim como esta}.
+
+Outra forma de fazer o \textit{Sweave} interpretar comandos do \textsf{R}
+é usar o comando
+\verb|Sexpr{}|
+onde dentro das chaves coloca-se uma expressão em \textsf{R} a ser processada e o resultado é incluido no texto.
+Neste caso o comando que gerou o resultado é omitido do texto final.
+Por exemplo:
+o desvio padrão dos dados gerados acima é de \Sexpr{round(sd(x), dig=2)}.
+
+Vamos agora mostrar como inserir uma figura. Para isto temos que adicionar
+a op\c{c}ão \verb|fig=T| no "chunk".
+\begin{figure}[h!]
+\centering
+<<grafico-normal,fig=T>>=
+plot(dnorm, -3, 3, ylab="f(x)")
+title("Distribuição Normal Padrão")
+@
+\caption{Grafico da N(0,1).}
+\end{figure}
+
+
+\section{Algumas op\c{c}ões do Sweave}
+
+Os "chunks"  podem receber argumentos que controlam seu funcionamento.
+
+\begin{enumerate}
+\item Não incluir comando
+<<echo=F>>=
+mean(x)
+@
+
+\item Não incluir saída
+<<results=hide>>=
+mean(x)
+@
+
+\item Não processar o conteúdo do "chunk"
+<<eval=F>>=
+mean(x)
+@
+
+\item Incluir Figura sem que o comando que a gerou apare\c{c}a
+\begin{figure}
+\centering
+<<echo=F,fig=T>>=
+boxplot(x)
+@
+\caption{Figura gerada sem mostrar os comandos.}
+\end{figure}
+
+
+\item Separando comando de figura. Um exemplo do reuso de "chunks".
+
+O figura~\ref{fig2} mostra um boxplot para os dados simulados e é produzida com o comando
+<<label=bp,eval=F>>=
+boxplot(x)
+@
+
+\begin{figure}
+<<fig=T,echo=F>>=
+<<bp>>
+@
+\caption{Boxplot dos dados simulados}
+\label{fig2}
+\end{figure}
+
+
+\item Extraindo código R: \textsl{\texttt{Stangle(arquivo.Rnw)}} vai gerar um \verb|arquivo.R| com apenas os comandos do R.
+
+\end{enumerate}
+
+
+Outra coisa util e poder controlar o tamanho dos graficos.
+Considere a figura \ref{histbox} gerada pelos seguintes comandos:
+<<amostra-exp,eval=F>>=
+x1 <- rexp(200, rate=2)
+par(mfrow=c(1,2), mar=c(3,3,0.2,0.2), mgp=c(2,1,0))
+hist(x1, main="",xlab="variavel x1", ylab="frequencias")
+boxplot(x1, ylab="variavel x1")
+@
+
+\setkeys{Gin}{width=0.95\textwidth}
+
+\begin{figure}
+\centering
+<<fig=T,echo=F>>=
+<<amostra-exp>>
+@
+\caption{Histograma e boxplot de uma amostra de tamanho 200 de uma
+         distribuiçao exponencial. }
+\label{histbox}
+\end{figure}
+
+
+
+\end{document}
