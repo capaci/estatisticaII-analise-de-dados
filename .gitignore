@@ -1,0 +1,5 @@
+*.pdf
+!comousarosbagui.pdf
+*.tex
+*.log
+*.synctex.gz
