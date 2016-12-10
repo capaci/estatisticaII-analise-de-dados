@@ -18,24 +18,102 @@
 
 %-----
 % Carregando a tabela de dados e outras configurações iniciais do R
-% * Isso está sendo feito aqui para nós não nos perdemos ao escrever o restante do documento
+% * Isso está sendo feito aqui para nós não nos perdemos ao escrever o restante do documento, por isso está marcado para não mostrar os comandos e o resultado da execução
 %-----
 <<label=Rsetup,echo=F,results=hide>>=
-table <- read.table("studentdata.txt", head=T)
+data <- read.table("studentdata.txt", head=T)
 @
 
 \section{Introdução}
 O trabalho é fazer uma análise estatística de dados utilizando o \textit{Knitr}, levando em consideração tudo o que foi trabalhado durante o semestre na disciplina de Estatística II.
 
 \subsection{Tabela de Dados}
-Escolhemos o conjunto de dados studentdata, do pacote LearnBayes do programa R. Abaixo, uma pequena amostra dos dados da tabela\footnote{Todos os dados da tabela, que possui 657 registros, podem ser encontrados no arquivo \textit{studentdata.txt}, que foi entregue junto com este relatório}:
+Escolhemos o conjunto de dados studentdata, do pacote LearnBayes do programa R. Abaixo, mostramos os dez primeiros registros da tabela\footnote{Todos os dados da tabela, que possui 657 registros, podem ser encontrados no arquivo \textit{studentdata.txt}, que foi entregue junto com este relatório}:
 <<label=studentdata,echo=F>>=
-head(table)
+data[1:10,]
+@
+
+As colunas da tabela se referem às seguintes questões:
+\begin{itemize}
+\item Student: número do estudante
+\item Height: altura em polegadas
+\item Gender: gênero (Masculino/Feminino)
+\item Shoes: número de pares de sapato que possui
+\item Number: um número escolhido entre 0 e 10
+\item Dvds: número de DVD’s de filmes que possui
+\item ToSleep: hora que foi dormir na noite anterior (em relaçãao à meia noite)
+\item WakeUp: hora que acordou na manhã seguinte
+\item Haircut: custo do último corte de cabelo
+\item Job: número de horas (semanais) de trabalho
+\item Drink: bebida usual na janta (áagua, leite, suco/refrigerante)
+\end{itemize}
+
+\section{Classificação dos dados}
+\begin{itemize}
+\item Student: Qualitativa nominal (??? Qualitativa pq não se refere a uma quantia e nominal pq a ordem não interessa?)
+\item Height: Quantitativa discreta (??? discreta pq, como é em polegadas, o intervalo é só dos números inteiros e tem uma certa faixa de valores)
+\item Gender: Qualitativa nominal
+\item Shoes: Quantitativa discreta
+\item Number: Qualitativa nominal (??? seria pq não está medindo nada?)
+\item Dvds: Quantitativa discreta
+\item ToSleep: Quantitativa contínua
+\item WakeUp: Quantitativa contínua
+\item Haircut: Quantitativa discreta (???)
+\item Job: Quantitativa contínua
+\item Drink: Qualitativa nominal
+\end{itemize}
+
+\section{Frequências}
+height
+<<label=heightFreq,echo=F>>=
+height <- table(data[,"Height"])
+height
+@
+gender
+<<label=genderFreq,echo=F>>=
+gender <- table(data[,"Gender"])
+gender
+@
+shoes
+<<label=shoesFreq,echo=F>>=
+shoes <- table(data[,"Shoes"])
+shoes
+@
+number
+<<label=numberFreq,echo=F>>=
+number <- table(data[,"Number"])
+number
+@
+toSleep
+<<label=toSleepFreq,echo=F>>=
+toSleep <- table(data[,"ToSleep"])
+toSleep
+@
+wakeUp
+<<label=wakeUpFreq,echo=F>>=
+wakeUp <- table(data[,"WakeUp"])
+wakeUp
+@
+haircut
+<<label=haircutFreq,echo=F>>=
+haircut <- table(data[,"Haircut"])
+haircut
+@
+job
+<<label=jobFreq,echo=F>>=
+job <- table(data[,"Job"])
+job
+@
+drink
+<<label=drinkFreq,echo=F>>=
+drink <- table(data[,"Drink"])
+drink
+@
 @
 
 
 
-\section{Introdu\c{c}ão}
+\section{Introdução}
 Este documento ilustra o uso do \textit{Sweave}, um mecanismo criado por
 Frederich Leisch (Universidade Técnica de Viena - Áustria)
 que facilita muito a cria\c{c}ão de textos de análise estatística.
