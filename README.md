@@ -1,6 +1,13 @@
 # Trabalho de Estatística II da UFPR
 Trabalho de CE003, semestre 2016-2, que consiste em fazer uma análise estatística de alguns dados. Os dados escolhidos para esse trabalho em questão foram os dados da tabela <em>studentdata</em>, do pacote LearnBayes do programa R. O relatório é todo escrito em LaTeX, utilizando o pacote <em>Sweave</em> para executar trechos de código R presentes no documento, o que facilita a escrita do relatório.
 
+
+#### Arquivos:
+
+- **comousarosbagui.pdf**: arquivo que contém algumas informações e comandos interessantes sobre o Sweave
+- **relatorio.Rnw**: arquivo que contém todo o LaTeX escrito para gerar o pdf do relatório. Ele se encontra no formato ".Rnw", pois é o formato necessário para o Sweave poder interpretar os trechos de código R que estão no documento.
+- **studentdata.txt**: arquivo que contém os dados utilizados para toda a análise que foi feita no trabalho
+
 ## Getting Started
 As informações necessárias para compilar o LaTeX, estão logo abaixo:
 
