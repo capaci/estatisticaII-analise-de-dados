@@ -4,7 +4,7 @@ Trabalho de CE003, semestre 2016-2, que consiste em fazer uma análise estatíst
 
 #### Arquivos:
 
-- **comousarosbagui.pdf**: arquivo que contém algumas informações e comandos interessantes sobre o Sweave
+- **comousarosbagui.pdf**: arquivo que contém algumas informações e comandos interessantes sobre o Sweave. Esse pdf foi gerado a partir de um arquivo .Rnw, que contém todo o código para gerar o pdf. Esse arquivo está [nesse link](http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/aulasweave.Rnw).
 - **relatorio.Rnw**: arquivo que contém todo o LaTeX escrito para gerar o pdf do relatório. Ele se encontra no formato ".Rnw", pois é o formato necessário para o Sweave poder interpretar os trechos de código R que estão no documento.
 - **studentdata.txt**: arquivo que contém os dados utilizados para toda a análise que foi feita no trabalho
 
@@ -37,3 +37,4 @@ pdflatex relatorio.tex
 ## Materiais auxiliares
 - [Introdução à R](http://leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapa.pdf)
 - [O que é, por que e como usar Sweave](http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapase35.html)
+- [Arquivo .Rnw exemplo](http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/aulasweave.Rnw), contendo vários trechos de códigos que podem ser utilizados
