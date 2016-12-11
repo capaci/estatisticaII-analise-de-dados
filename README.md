@@ -32,7 +32,7 @@ pdflatex relatorio.tex
 ```
 
 ##### Pelo RStudio:
-É bem intuitivo, na verdade. Para facilitar o entendimento, é interessante assistir esse [vídeo](http://cdn.screenr.com/video/8352c25b-7324-4134-970b-b7c427381adb.mp4) que, apesar de ser do Knitr, software semelhante ao Sweave, mostra um pouquinho sobre algumas funcionalidades interessantes do RStudio, o suficiente para esse trabalho.  
+É bem intuitivo, na verdade. Para facilitar o entendimento, é interessante assistir esse [vídeo](http://cdn.screenr.com/video/8352c25b-7324-4134-970b-b7c427381adb.mp4) que, apesar de ser do Knitr, software semelhante ao Sweave, mostra um pouquinho sobre algumas funcionalidades interessantes do RStudio, o suficiente para esse trabalho. Além disso, use o comando **setwd("<diretorio_do_trabalho>")** no console do RStudio para setar o workspace e conseguir carregar os arquivos de maneira correta quando necessário fazer testes no RStudio.
 
 ## Materiais auxiliares
 - [Introdução à R](http://leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapa.pdf)
