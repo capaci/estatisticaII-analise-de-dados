@@ -26,3 +26,7 @@ pdflatex relatorio.tex
 
 ##### Pelo RStudio:
 É bem intuitivo, na verdade. Para facilitar o entendimento, é interessante assistir esse [vídeo](http://cdn.screenr.com/video/8352c25b-7324-4134-970b-b7c427381adb.mp4) que, apesar de ser do Knitr, software semelhante ao Sweave, mostra um pouquinho sobre algumas funcionalidades interessantes do RStudio, o suficiente para esse trabalho.  
+
+## Materiais auxiliares
+- [Introdução à R](http://leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapa.pdf)
+- [O que é, por que e como usar Sweave](http://www.leg.ufpr.br/~paulojus/embrapa/Rembrapa/Rembrapase35.html)
