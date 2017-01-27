@@ -1,4 +1,4 @@
-# Trabalho de Estatística II da UFPR
+# Trabalho de Estatística II da UFPR ***** O TRABALHO NÃO FOI FINALIZADO *****
 Trabalho de CE003, semestre 2016-2, que consiste em fazer uma análise estatística de alguns dados. Os dados escolhidos para esse trabalho em questão foram os dados da tabela <em>studentdata</em>, do pacote LearnBayes do programa R. O relatório é todo escrito em LaTeX, utilizando o pacote <em>Sweave</em> para executar trechos de código R presentes no documento, o que facilita a escrita do relatório.
 
 
